@@ -7,8 +7,14 @@ def readline(): #method to read lines
     while True:#while True do the following
         buffers=args.decode()#decodes the bytes into character strings
         os.write(1,f"{buffers}".encode())#will write using file descriptor 1 and show the message in the fstring which is buffers.
-        newlinebuffer=buffer.splitlines()#will split the buffer list in to another list based on new lines
+        newlinebuffer=buffers.splitlines()#will split the buffer list in to another list based on new lines
         for i in newlinebuffer:
             i.split()
+        args=os.read(0,1024)
 
-    
+while True:
+    if 'PS1'in os.environ: #if PS1 is defined in the enviornemtn is defined
+        os.write(1, (os.environ['PS1']).encode())#write with file descriptor 1 the enviornemnt pathof PS1
+    else:#if PS1 is not found 
+        os.write(1, ("> ").encode())
+    readline()
