@@ -14,6 +14,9 @@ def readline(): #method to read lines
 def execute(args):#Method called execute that takes in arguemnts which is a list
     if len(args)==0: #if arguments list is 0 then it will just return
         return
+    elif args[0]=="pwd":#if user types pwd
+        x=os.getcwd()#gets current working directory
+        os.write(1,("%s\n"%x).encode())#writes the currend print working directory
     elif args[0].lower()=="exit": #if user says exit no matter what way you will exit
         sys.exit(0)
     elif args[0]=="cd..":#if argument is cd.. then user will go up one directory
